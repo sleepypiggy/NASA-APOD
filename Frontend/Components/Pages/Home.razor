@@ -1,0 +1,38 @@
+@page "/"
+
+@rendermode InteractiveServer
+
+@using System.Net.Http.Json
+@inject IHttpClientFactory HttpClientFactory
+
+@if (apod is null) {
+    <p> Placeholder. There should be nothing here. </p>
+} 
+else 
+{
+    <div id="apod-container">
+        <img src="@apod.Url" alt="Astronomy picture for @apod.Date" id="pod"/>
+        <h2> @apod.Title </h2>
+        <button @onclick="GetApod" id="find-apod-button"> Find </button>
+        <input type="Date" min ="1995-06-16" @bind="SelectedDate"/>
+    </div>
+}
+
+
+
+
+@code {
+    public DateOnly SelectedDate{ get; set; } = DateOnly.FromDateTime(DateTime.Today);
+    private Apod? apod;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetApod();
+    }
+
+    public async Task GetApod() 
+    {
+        var httpClient = HttpClientFactory.CreateClient("Api");
+        apod = await httpClient.GetFromJsonAsync<Apod>($"/apod/date/{SelectedDate}");
+    }
+}

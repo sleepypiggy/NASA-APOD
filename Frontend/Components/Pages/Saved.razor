@@ -1,0 +1,46 @@
+@page "/saved"
+
+<div id="saved-apods"> 
+    <table class="apod-table"> 
+        <thead>
+            <tr>
+                <th> Id </th>
+                <th> Title </th>
+                <th> Date </th>
+                <th> Explanation </th>
+                <th> Media Type </th>
+                <th> Service Version </th>
+                <th> Image </th>
+                <th> HD-Image </th>
+                <th> Command </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(Apod apod in SavedApods)
+            {
+                <tr>
+                    <td> @apod.Id </td>
+                    <td> @apod.Title </td>
+                    <td> @apod.Date </td>
+                    <td> @apod.Explanation </td>
+                    <td> @apod.MediaType </td>
+                    <td> @apod.ServiceVersion </td>
+                    <td> @apod.Url </td>
+                    <td> @apod.Hdurl </td>
+                    <td> 
+                        <button @onclick="() => SavedApods.Remove(apod)"> X </button>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+@code {
+    List<Apod> SavedApods = new List<Apod>();
+    public void AddApod() 
+    {
+        
+    }
+}

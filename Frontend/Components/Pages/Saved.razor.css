@@ -1,0 +1,37 @@
+.apod-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px (0, 0, 0, 0.15);
+    width: 100%;
+}
+
+.apod-table thead tr {
+    background-color: rgb(1, 126, 113);
+    color: white;
+    text-align: left;
+    font-weight: bold;
+}
+
+.apod-table th, .apod-table td {
+    padding: 12px 15px;
+}
+
+.apod-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.apod-table tbody tr:nth-last-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.apod-table tbody tr:last-of-type {
+    border-bottom: 2px solid rgb(1, 126, 113)
+}
+
+.apod-table tbody tr:hover {
+    background-color: #f5f3f3
+}

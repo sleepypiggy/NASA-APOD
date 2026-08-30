@@ -1,0 +1,10 @@
+#pod[b-p8141ciarm] {
+    width: 50%;
+    max-width: 1200px;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+}
+
+#apod-container[b-p8141ciarm] {
+    display: block;
+}

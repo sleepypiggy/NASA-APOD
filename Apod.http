@@ -1,0 +1,28 @@
+GET http://localhost:5256/apod
+
+###
+
+GET http://localhost:5256/apod/date/2020-01-01
+
+###
+
+POST http://localhost:5256/apod/
+Content-Type: application/json
+
+{
+    "Date": "2020-01-01",
+    "Explanation": "h",
+    "Hdurl": "e",
+    "MediaType": "a",
+    "ServiceVersion": "V1",
+    "Title": "title",
+    "Url": "url"
+}
+
+###
+
+PUT http://localhost:5256/apod/1
+
+###
+
+DELETE http://localhost:5256/apod/1
