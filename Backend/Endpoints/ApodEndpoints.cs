@@ -8,6 +8,12 @@ public static class ApodEndpoints
 {
     public static void MapApodEndpoints(this WebApplication app)
     {
+        // GET 
+        app.MapGet("/apod/", async (ApodContext dbContext) =>
+        {
+            return await dbContext.Apods.ToListAsync();
+        });
+
         // GET /id (unique id given to each "Date" the user saves)
         app.MapGet("/apod/saved/id/{id}", async (int id, ApodContext dbContext) =>
         {
@@ -24,11 +30,12 @@ public static class ApodEndpoints
         });
 
         // POST /id (save to favorites?)
-        app.MapPost("/apod/saved/id/{id}", async (int id, ApodDto newApod, ApodContext dbContext) =>
+        app.MapPost("/apod/", async (ApodDto newApod, ApodContext dbContext) =>
         {
             Apod apod = new()
             {
                 Date = newApod.Date,
+                Explanation = newApod.Explanation,
                 Hdurl = newApod.Hdurl,
                 MediaType = newApod.MediaType,
                 ServiceVersion = newApod.ServiceVersion,

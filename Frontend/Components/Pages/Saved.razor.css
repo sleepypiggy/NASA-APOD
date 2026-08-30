@@ -35,3 +35,17 @@
 .apod-table tbody tr:hover {
     background-color: #f5f3f3
 }
+
+.view-saved-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.popover-box {
+    max-width: 95vw;
+    max-height: 95vh;
+}
+
+.popover-box::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}

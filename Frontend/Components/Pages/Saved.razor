@@ -1,5 +1,7 @@
 @page "/saved"
 
+@inject IHttpClientFactory HttpClientFactory;
+
 <div id="saved-apods"> 
     <table class="apod-table"> 
         <thead>
@@ -22,13 +24,28 @@
                     <td> @apod.Id </td>
                     <td> @apod.Title </td>
                     <td> @apod.Date </td>
-                    <td> @apod.Explanation </td>
+                    <td>
+                        <button popovertarget="view-explanation-@apod.Id"> Explanation </button>
+                        <div id="view-explanation-@apod.Id" popover class="popover-box"> 
+                            <p> @apod.Explanation </p>
+                        </div>
+                    </td>
                     <td> @apod.MediaType </td>
                     <td> @apod.ServiceVersion </td>
-                    <td> @apod.Url </td>
-                    <td> @apod.Hdurl </td>
+                    <td>
+                        <button popovertarget="view-image-@apod.Id"> Image </button>
+                        <div id="view-image-@apod.Id" popover class="popover-box">
+                            <img src="@apod.Url" class="view-saved-image"/>
+                        </div>
+                    </td>
+                    <td>
+                        <button popovertarget="view-hd-image-@apod.Id"> HD Image </button>
+                        <div id="view-hd-image-@apod.Id" popover class="popover-box">
+                            <img src="@apod.Hdurl" class="view-saved-image"/>
+                        </div>
+                    </td>
                     <td> 
-                        <button @onclick="() => SavedApods.Remove(apod)"> X </button>
+                        <button @onclick="() => DeleteApod(apod)"> X </button>
                     </td>
                 </tr>
             }
@@ -39,8 +56,16 @@
 
 @code {
     List<Apod> SavedApods = new List<Apod>();
-    public void AddApod() 
+    protected override async Task OnInitializedAsync()
     {
-        
+        var httpClient = HttpClientFactory.CreateClient("Api");
+        SavedApods = await httpClient.GetFromJsonAsync<List<Apod>>("/apod/") ?? [];
+    }
+
+    private async void DeleteApod(Apod apod)
+    {
+        SavedApods.Remove(apod);
+        var httpClient = HttpClientFactory.CreateClient("Api");
+        await httpClient.DeleteAsync($"/apod/saved/id/{apod.Id}");
     }
 }

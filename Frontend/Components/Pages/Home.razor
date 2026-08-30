@@ -6,14 +6,17 @@
 @inject IHttpClientFactory HttpClientFactory
 
 @if (apod is null) {
-    <p> Placeholder. There should be nothing here. </p>
+    <p> Loading... </p>
 } 
 else 
 {
     <div id="apod-container">
         <img src="@apod.Url" alt="Astronomy picture for @apod.Date" id="pod"/>
         <h2> @apod.Title </h2>
+        <h2> @apod.MediaType </h2>
+        <h2> @apod.ServiceVersion </h2>
         <button @onclick="GetApod" id="find-apod-button"> Find </button>
+        <button @onclick="SaveApod" id="save-apod-button"> Save </button>
         <input type="Date" min ="1995-06-16" @bind="SelectedDate"/>
     </div>
 }
@@ -34,5 +37,11 @@ else
     {
         var httpClient = HttpClientFactory.CreateClient("Api");
         apod = await httpClient.GetFromJsonAsync<Apod>($"/apod/date/{SelectedDate}");
+    }
+
+    public async Task SaveApod()
+    {
+        var httpClient = HttpClientFactory.CreateClient("Api");
+        await httpClient.PostAsJsonAsync("/apod/", apod);
     }
 }

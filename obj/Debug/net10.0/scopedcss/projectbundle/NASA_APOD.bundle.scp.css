@@ -252,3 +252,17 @@ main[b-qix8y9mb5w] {
 .apod-table tbody tr:hover[b-6jkqzb7ud8] {
     background-color: #f5f3f3
 }
+
+.view-saved-image[b-6jkqzb7ud8] {
+    max-width: 100%;
+    height: auto;
+}
+
+.popover-box[b-6jkqzb7ud8] {
+    max-width: 95vw;
+    max-height: 95vh;
+}
+
+.popover-box[b-6jkqzb7ud8]::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
