@@ -1,7 +1,11 @@
 using NASA_APOD;
 using NASA_APOD.Frontend.Components;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(new WebApplicationOptions
+{
+    Args = args,
+    WebRootPath = "Frontend/wwwroot"
+});
 
 builder.Services.AddHttpClient("Api", client =>
 {

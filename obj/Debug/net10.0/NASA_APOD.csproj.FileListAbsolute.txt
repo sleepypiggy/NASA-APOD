@@ -153,5 +153,5 @@ C:\Users\randy\Downloads\C#\NASA_APOD\obj\Debug\net10.0\scopedcss\Frontend\Compo
 C:\Users\randy\Downloads\C#\NASA_APOD\obj\Debug\net10.0\scopedcss\Frontend\Components\Pages\Home.razor.rz.scp.css
 C:\Users\randy\Downloads\C#\NASA_APOD\obj\Debug\net10.0\scopedcss\Frontend\Components\Pages\Saved.razor.rz.scp.css
 C:\Users\randy\Downloads\C#\NASA_APOD\obj\Debug\net10.0\NASA_APOD.sourcelink.json
-C:\Users\randy\Downloads\C#\NASA_APOD\obj\Debug\net10.0\compressed\s6x28zwj9w-{0}-j27a8fn6gm-j27a8fn6gm.gz
-C:\Users\randy\Downloads\C#\NASA_APOD\obj\Debug\net10.0\compressed\is385vhre8-{0}-j27a8fn6gm-j27a8fn6gm.gz
+C:\Users\randy\Downloads\C#\NASA_APOD\obj\Debug\net10.0\compressed\s6x28zwj9w-{0}-yh91cx4wwc-yh91cx4wwc.gz
+C:\Users\randy\Downloads\C#\NASA_APOD\obj\Debug\net10.0\compressed\is385vhre8-{0}-yh91cx4wwc-yh91cx4wwc.gz
