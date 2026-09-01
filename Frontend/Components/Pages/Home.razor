@@ -10,14 +10,26 @@
 } 
 else 
 {
-    <div id="apod-container">
-        <img src="@apod.Url" alt="Astronomy picture for @apod.Date" id="pod"/>
-        <h2> @apod.Title </h2>
-        <h2> @apod.MediaType </h2>
-        <h2> @apod.ServiceVersion </h2>
-        <button @onclick="GetApod" id="find-apod-button"> Find </button>
-        <button @onclick="SaveApod" id="save-apod-button"> Save </button>
-        <input type="Date" min ="1995-06-16" @bind="SelectedDate"/>
+    <div class="apod-container">
+        <div class="picture-title-container">
+            @* <button popovertarget="hd-image-@apod.Id" id="popover-button">
+                <img src="@apod.Url" alt="Astronomy picture for @apod.Date" id="pod"/>
+            </button>
+            <img popover src="@apod.Hdurl" id="hd-image-@apod.Id" /> *@
+            <img src="@apod.Url" alt="Astronomy picture for @apod.Date" id="pod"/>
+            <h2 id="title"> @apod.Title </h2>
+        </div>
+        <div class="control-container"> 
+            <p> Media Type: @apod.MediaType </p>
+            <p> Version: @apod.ServiceVersion </p>
+            <p> HD-Image </p>
+            <input type="Date" min ="1995-06-16" @bind="SelectedDate"/>
+            <button @onclick="GetApod" id="find-apod-button"> Find </button>
+            <button @onclick="SaveApod" id="save-apod-button"> Save </button>
+        </div>
+        <div class="explanation-container"> 
+            <p> @apod.Explanation </p>
+        </div>
     </div>
 }
 
