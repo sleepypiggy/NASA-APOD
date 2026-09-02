@@ -22,8 +22,8 @@ else
         <div class="control-container"> 
             <p> Media Type: @apod.MediaType </p>
             <p> Version: @apod.ServiceVersion </p>
-            <p> HD-Image </p>
-            <input type="Date" min ="1995-06-16" @bind="SelectedDate"/>
+            <NavLink href="@apod.Hdurl" id="hd-image-link" target="_blank"> HD Image </NavLink> <br />
+            <input type="Date" min ="1995-06-16" @bind="SelectedDate" id="date-selector"/>
             <button @onclick="GetApod" id="find-apod-button"> Find </button>
             <button @onclick="SaveApod" id="save-apod-button"> Save </button>
         </div>
