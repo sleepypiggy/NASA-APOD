@@ -243,7 +243,7 @@ main[b-qix8y9mb5w] {
     border-radius: 1rem;
     height: max-content;
     width: 100%;
-    height: 20%;
+    height: 15%;
     margin: 0;
 }
 
@@ -264,6 +264,10 @@ main[b-qix8y9mb5w] {
 
 #save-apod-button[b-p8141ciarm] {
     width: 100%;
+}
+
+#date-selector[b-p8141ciarm] {
+    margin-top: 1em;
 }
 /* /Frontend/Components/Pages/Saved.razor.rz.scp.css */
 .apod-table[b-6jkqzb7ud8] {

@@ -47,10 +47,11 @@ public static class ApodEndpoints
             return Results.Ok(apod);
         });
 
-        app.MapPut("/apod/saved/id/{id}", (int id) =>
-        {
+        // PUT (probably not needed for this program so far at least)
+        // app.MapPut("/apod/saved/id/{id}", (int id, ApodContext dbContext) =>
+        // {
             
-        });
+        // });
         
         app.MapDelete("/apod/saved/id/{id}", async (int id, ApodContext dbContext) =>
         {

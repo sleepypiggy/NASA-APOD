@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NASA_APOD")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4f9937d5051899d2f1c3bf0ff0b7a03a56cf2467")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ed8d4ce76764809d84d505ab5b87ecfd264cfcd4")]
 [assembly: System.Reflection.AssemblyProductAttribute("NASA_APOD")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NASA_APOD")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
