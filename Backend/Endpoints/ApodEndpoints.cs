@@ -24,9 +24,14 @@ public static class ApodEndpoints
         // GET /date (retrives info directly from NASA API)
         app.MapGet("/apod/date/{date}", async (string date, [FromServices] HttpClient httpClient, IConfiguration config) =>
         {
+            // NASA has replaced their APOD API endpoint with a new one so we may not even need an api key anymore.
             string apiKey = config["NasaApiKey"]!;
-            string json = await httpClient.GetStringAsync($"https://api.nasa.gov/planetary/apod?api_key={apiKey}&date={date}");
+            // url is replaced with new one: no api key needed and format of date has changed.
+            string json = await httpClient.GetStringAsync($"https://science.nasa.gov/wp-json/wp/v2/apod-basic/{date}");
             return Results.Ok(JsonSerializer.Deserialize<Apod>(json));
+            // I think this technically should deserialize into an ApodDto instead of an Apod.
+            // Then, the code in Home.razor would have to change accordingly.
+            // We would then do something similar to below where we just create a new Apod using the ApodDto properties and return that instead.
         });
 
         // POST /id (save to favorites?)

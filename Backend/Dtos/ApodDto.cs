@@ -4,6 +4,8 @@ namespace NASA_APOD;
 
 public record class ApodDto(
     DateOnly Date,
+    int PostID,
+    string Permalink,
     string Explanation,
     string Hdurl,
     [property: JsonPropertyName("media_type")]

@@ -16,7 +16,7 @@ else
                 <img src="@apod.Url" alt="Astronomy picture for @apod.Date" id="pod"/>
             </button>
             <img popover src="@apod.Hdurl" id="hd-image-@apod.Id" /> *@
-            <img src="@apod.Url" alt="Astronomy picture for @apod.Date" id="pod"/>
+            <img src="@apod.Hdurl" alt="Astronomy picture for @apod.Date" id="pod"/>
             <h2 id="title"> @apod.Title </h2>
         </div>
         <div class="control-container"> 
@@ -48,7 +48,7 @@ else
     public async Task GetApod() 
     {
         var httpClient = HttpClientFactory.CreateClient("Api");
-        apod = await httpClient.GetFromJsonAsync<Apod>($"/apod/date/{SelectedDate}");
+        apod = await httpClient.GetFromJsonAsync<Apod>($"/apod/date/{SelectedDate.ToString("yyMMdd")}");
     }
 
     public async Task SaveApod()
