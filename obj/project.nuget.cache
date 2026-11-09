@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "mlI2oRKFq8U=",
+  "dgSpecHash": "oGrD22kMWCA=",
   "success": true,
   "projectFilePath": "C:\\Users\\randy\\Downloads\\C#\\NASA_APOD\\NASA_APOD.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\randy\\.nuget\\packages\\htmlagilitypack\\1.13.1\\htmlagilitypack.1.13.1.nupkg.sha512",
     "C:\\Users\\randy\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\randy\\.nuget\\packages\\microsoft.aspnetcore.app.internal.assets\\10.0.11\\microsoft.aspnetcore.app.internal.assets.10.0.11.nupkg.sha512",
     "C:\\Users\\randy\\.nuget\\packages\\microsoft.build.framework\\18.0.2\\microsoft.build.framework.18.0.2.nupkg.sha512",

@@ -14,12 +14,12 @@ public static class ApodEndpoints
             return await dbContext.Apods.ToListAsync();
         });
 
-        // GET /id (unique id given to each "Date" the user saves)
-        app.MapGet("/apod/saved/id/{id}", async (int id, ApodContext dbContext) =>
-        {
-            var apotd = await dbContext.Apods.FindAsync(id);
-            return apotd is null ? Results.NotFound() : Results.Ok(apotd);
-        });
+        // // GET /id (unique id given to each "Date" the user saves)
+        // app.MapGet("/apod/saved/id/{id}", async (int id, ApodContext dbContext) =>
+        // {
+        //     var apotd = await dbContext.Apods.FindAsync(id);
+        //     return apotd is null ? Results.NotFound() : Results.Ok(apotd);
+        // });
 
         // GET /date (retrives info directly from NASA API)
         app.MapGet("/apod/date/{date}", async (string date, [FromServices] HttpClient httpClient, IConfiguration config) =>
@@ -28,7 +28,18 @@ public static class ApodEndpoints
             string apiKey = config["NasaApiKey"]!;
             // url is replaced with new one: no api key needed and format of date has changed.
             string json = await httpClient.GetStringAsync($"https://science.nasa.gov/wp-json/wp/v2/apod-basic/{date}");
-            return Results.Ok(JsonSerializer.Deserialize<Apod>(json));
+            ApodDto apodDto = JsonSerializer.Deserialize<ApodDto>(json)!;
+            Apod apod = new Apod()
+            {
+                Date = apodDto.Date,
+                Explanation = apodDto.Explanation,
+                Hdurl = apodDto.Hdurl,
+                MediaType = apodDto.MediaType,
+                // ServiceVersion = apodDto.ServiceVersion,
+                Title = apodDto.Title,
+                Url = apodDto.Url,
+            };
+            return Results.Ok(apod);
             // I think this technically should deserialize into an ApodDto instead of an Apod.
             // Then, the code in Home.razor would have to change accordingly.
             // We would then do something similar to below where we just create a new Apod using the ApodDto properties and return that instead.
@@ -37,13 +48,16 @@ public static class ApodEndpoints
         // POST /id (save to favorites?)
         app.MapPost("/apod/", async (ApodDto newApod, ApodContext dbContext) =>
         {
+            // new API endpoint doesn't have a specified service version, and because our DTO says that service_version
+            // shouldn't be null, we get an error.
+            // So, we can remove service_version.
             Apod apod = new()
             {
                 Date = newApod.Date,
                 Explanation = newApod.Explanation,
                 Hdurl = newApod.Hdurl,
                 MediaType = newApod.MediaType,
-                ServiceVersion = newApod.ServiceVersion,
+                // ServiceVersion = newApod.ServiceVersion,
                 Title = newApod.Title,
                 Url = newApod.Url,
             };

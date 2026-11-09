@@ -13,8 +13,8 @@ public class Apod()
     public string Hdurl { get; set; } = "";
     [JsonPropertyName("media_type")]
     public string MediaType { get; set; } = "";
-    [JsonPropertyName("service_version")]
-    public string ServiceVersion { get; set; } = "";
+    // [JsonPropertyName("service_version")]
+    // public string ServiceVersion { get; set; } = "";
     [JsonPropertyName("title")]
     public string Title { get; set; } = "";
     [JsonPropertyName("url")]

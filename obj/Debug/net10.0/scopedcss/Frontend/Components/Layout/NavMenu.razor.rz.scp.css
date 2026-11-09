@@ -17,7 +17,8 @@
 
 .top-row[b-y83yllhejl] {
     min-height: 3.5rem;
-    background-color: rgba(0,0,0,0.4);
+    background: transparent;
+    border-bottom: 1px solid #2b2b2b;
 }
 
 .navbar-brand[b-y83yllhejl] {
@@ -83,6 +84,7 @@
 
 .nav-scrollable[b-y83yllhejl] {
     display: none;
+    border-right: 1px solid #2b2b2b;
 }
 
 .navbar-toggler:checked ~ .nav-scrollable[b-y83yllhejl] {

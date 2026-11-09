@@ -41,22 +41,37 @@
 .control-container {
     grid-area: control;
     text-align: center;
+    align-self: start;
+    background-color: #1E2023;
+    border-radius: 1em;
+    padding-top: 1em;
 }
 
 .explanation-container {
     grid-area: explanation;
+    
 }
 
 #find-apod-button {
-    width: 100%;
+    font-size: 1rem;
+    padding: 0.5em 1.25em;
     margin-bottom: 1em;
     margin-top: 1em;
 }
 
 #save-apod-button {
-    width: 100%;
+    font-size: 1rem;
+    padding: 0.5em 1.25em;
+
 }
 
 #date-selector {
     margin-top: 1em;
+}
+
+.button {
+    border-radius: 7px;
+    background-color: #0297DE;
+    color: white;
+    flex-basis: 10px;
 }

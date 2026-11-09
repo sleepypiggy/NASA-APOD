@@ -3,7 +3,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    background-color: #292929;
+    background-color: #02070A;
     color: white;
 }
 
@@ -13,12 +13,12 @@ main[b-qix8y9mb5w] {
 
 .sidebar[b-qix8y9mb5w] {
     /* background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%); */
-    background-color: #0F1F2B;
+    /* background: linear-gradient(to right, #0297DE, transparent); */
 }
 
 .top-row[b-qix8y9mb5w] {
-    background-color: #202020;
-    /* border-bottom: 1px solid #000000; */
+    background: #000000;
+    border-bottom: 1px solid #2b2b2b;
     justify-content: flex-end;
     height: 3.5rem;
     display: flex;
@@ -120,7 +120,8 @@ main[b-qix8y9mb5w] {
 
 .top-row[b-y83yllhejl] {
     min-height: 3.5rem;
-    background-color: rgba(0,0,0,0.4);
+    background: transparent;
+    border-bottom: 1px solid #2b2b2b;
 }
 
 .navbar-brand[b-y83yllhejl] {
@@ -186,6 +187,7 @@ main[b-qix8y9mb5w] {
 
 .nav-scrollable[b-y83yllhejl] {
     display: none;
+    border-right: 1px solid #2b2b2b;
 }
 
 .navbar-toggler:checked ~ .nav-scrollable[b-y83yllhejl] {
@@ -250,24 +252,39 @@ main[b-qix8y9mb5w] {
 .control-container[b-p8141ciarm] {
     grid-area: control;
     text-align: center;
+    align-self: start;
+    background-color: #1E2023;
+    border-radius: 1em;
+    padding-top: 1em;
 }
 
 .explanation-container[b-p8141ciarm] {
     grid-area: explanation;
+    
 }
 
 #find-apod-button[b-p8141ciarm] {
-    width: 100%;
+    font-size: 1rem;
+    padding: 0.5em 1.25em;
     margin-bottom: 1em;
     margin-top: 1em;
 }
 
 #save-apod-button[b-p8141ciarm] {
-    width: 100%;
+    font-size: 1rem;
+    padding: 0.5em 1.25em;
+
 }
 
 #date-selector[b-p8141ciarm] {
     margin-top: 1em;
+}
+
+.button[b-p8141ciarm] {
+    border-radius: 7px;
+    background-color: #0297DE;
+    color: white;
+    flex-basis: 10px;
 }
 /* /Frontend/Components/Pages/Saved.razor.rz.scp.css */
 .apod-table[b-6jkqzb7ud8] {
@@ -282,7 +299,7 @@ main[b-qix8y9mb5w] {
 }
 
 .apod-table thead tr[b-6jkqzb7ud8] {
-    background-color: #131F2A;
+    background-color: #0297DE;
     color: white;
     text-align: left;
     font-weight: bold;

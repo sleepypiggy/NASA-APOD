@@ -3,6 +3,8 @@
 @rendermode InteractiveServer
 
 @using System.Net.Http.Json
+@using System.Web
+@using HtmlAgilityPack
 @inject IHttpClientFactory HttpClientFactory
 
 @if (apod is null) {
@@ -21,14 +23,14 @@ else
         </div>
         <div class="control-container"> 
             <p> Media Type: @apod.MediaType </p>
-            <p> Version: @apod.ServiceVersion </p>
+            @* <p> Version: @apod.ServiceVersion </p> *@
             <NavLink href="@apod.Hdurl" id="hd-image-link" target="_blank"> HD Image </NavLink> <br />
-            <input type="Date" min ="1995-06-16" @bind="SelectedDate" id="date-selector"/>
-            <button @onclick="GetApod" id="find-apod-button"> Find </button>
-            <button @onclick="SaveApod" id="save-apod-button"> Save </button>
+            <input type="Date" min ="1995-06-16" @bind="SelectedDate" id="date-selector"/> <br />
+            <button @onclick="GetApod" id="find-apod-button" class="button"> Find </button>
+            <button @onclick="SaveApod" id="save-apod-button" class="button"> Save </button>
         </div>
         <div class="explanation-container"> 
-            <p> @apod.Explanation </p>
+            <p> @getExplanation(apod) </p>
         </div>
     </div>
 }
@@ -37,7 +39,7 @@ else
 
 
 @code {
-    public DateOnly SelectedDate{ get; set; } = DateOnly.FromDateTime(DateTime.Today);
+    private DateOnly SelectedDate{ get; set; } = DateOnly.FromDateTime(DateTime.Today);
     private Apod? apod;
 
     protected override async Task OnInitializedAsync()
@@ -45,13 +47,24 @@ else
         await GetApod();
     }
 
-    public async Task GetApod() 
+    // turn explanation with html markup into raw text (without the html elements)
+    private string getExplanation(Apod apod)
+    {
+        string htmlMarkup = apod.Explanation;
+        var htmlDoc = new HtmlDocument();
+        htmlDoc.LoadHtml(htmlMarkup);
+        string rawText = htmlDoc.DocumentNode.InnerText;
+        string plainText = HttpUtility.HtmlDecode(rawText);
+        return plainText;
+    }
+
+    private async Task GetApod() 
     {
         var httpClient = HttpClientFactory.CreateClient("Api");
         apod = await httpClient.GetFromJsonAsync<Apod>($"/apod/date/{SelectedDate.ToString("yyMMdd")}");
     }
 
-    public async Task SaveApod()
+    private async Task SaveApod()
     {
         var httpClient = HttpClientFactory.CreateClient("Api");
         await httpClient.PostAsJsonAsync("/apod/", apod);
