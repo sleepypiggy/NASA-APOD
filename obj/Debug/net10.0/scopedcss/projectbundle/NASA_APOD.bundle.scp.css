@@ -287,6 +287,71 @@ main[b-qix8y9mb5w] {
     flex-basis: 10px;
 }
 /* /Frontend/Components/Pages/Saved.razor.rz.scp.css */
+#saved-apods-grid[b-6jkqzb7ud8] {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    min-height: 40rem;
+    row-gap: 20px;
+    column-gap: 20px;
+}
+
+#saved-apods-grid > *[b-6jkqzb7ud8] {
+    border-radius: 10px;
+    background-color: #1E2023;
+}
+
+#saved-apod-info[b-6jkqzb7ud8] {
+    padding: 10px;
+}
+
+.saved-image[b-6jkqzb7ud8] {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 10px;
+}
+
+#img-url:hover[b-6jkqzb7ud8] {
+    filter:brightness(70%);
+}
+
+#button-container[b-6jkqzb7ud8] {
+    display: flex;
+    justify-content: space-between;
+}
+
+#explanation-button[b-6jkqzb7ud8] {
+    border-radius: 5px;
+    background-color:#0297DE;
+    border: none;
+    color: white;
+    transition: background-color 150ms, transform 150ms;
+}
+
+#explanation-button:hover[b-6jkqzb7ud8] {
+    background-color: #006ea1;
+}
+
+#explanation-button:active[b-6jkqzb7ud8] {
+    transform: scale(0.95);
+}
+
+#delete-button[b-6jkqzb7ud8] {
+    border-radius: 5px;
+    background-color: red;
+    color: white;
+    border: none;
+    transition: background-color 150ms, transform 150ms;
+}
+
+#delete-button:hover[b-6jkqzb7ud8] {
+    background-color: rgb(164, 0, 0);
+}
+
+#delete-button:active[b-6jkqzb7ud8] {
+    transform:scale(0.95);
+}
+
 .apod-table[b-6jkqzb7ud8] {
     border-collapse: collapse;
     margin: 25px 0;

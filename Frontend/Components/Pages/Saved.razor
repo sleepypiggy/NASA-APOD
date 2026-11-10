@@ -1,58 +1,36 @@
 @page "/saved"
 
+@using HtmlAgilityPack;
+@using System.Web;
 @inject IHttpClientFactory HttpClientFactory;
 
 <div id="saved-apods">
-    <table class="apod-table"> 
-        <thead>
-            <tr>
-                <th> Id </th>
-                <th> Title </th>
-                <th> Date </th>
-                <th> Explanation </th>
-                <th> Media Type </th>
-                @* <th> Service Version </th> *@
-                <th> Image </th>
-                <th> HD-Image </th>
-                <th> Command </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach(Apod apod in SavedApods)
-            {
-                <tr>
-                    <td> @apod.Id </td>
-                    <td> @apod.Title </td>
-                    <td> @apod.Date </td>
-                    <td>
-                        <button popovertarget="view-explanation-@apod.Id"> Explanation </button>
-                        <div id="view-explanation-@apod.Id" popover class="popover-box"> 
-                            <p> @apod.Explanation </p>
-                        </div>
-                    </td>
-                    <td> @apod.MediaType </td>
-                    @* remove service version column because it doesn't exist anymore *@
-                    @* <td> @apod.ServiceVersion </td> *@
-                    <td>
-                        <button popovertarget="view-image-@apod.Id"> Image </button>
-                        <div id="view-image-@apod.Id" popover class="popover-box">
-                            <img src="@apod.Url" class="view-saved-image"/>
-                        </div>
-                    </td>
-                    <td>
-                        <button popovertarget="view-hd-image-@apod.Id"> HD Image </button>
-                        <div id="view-hd-image-@apod.Id" popover class="popover-box">
-                            <img src="@apod.Hdurl" class="view-saved-image"/>
-                        </div>
-                    </td>
-                    <td> 
-                        <button @onclick="() => DeleteApod(apod)"> X </button>
-                    </td>
-                </tr>
-            }
+    <div id="saved-apods-grid">
 
-        </tbody>
-    </table>
+        @foreach(Apod apod in SavedApods)
+        {
+            <div>
+                @* might make image click go to popover? *@
+                <a href="@apod.Hdurl" target="none" id="img-url">
+                    <img src="@apod.Hdurl" class="saved-image"/>
+                </a>
+                <div id="saved-apod-info">
+                    <p class="grid-item"> ID: @apod.Id </p>
+                    <p class="grid-item"> Title: @apod.Title </p>
+                    <p class="grid-item"> Date: @apod.Date </p>
+                    <p class="grid-item"> Media Type: @apod.MediaType </p>
+                    <div id="button-container">
+                        <button popovertarget="view-explanation-@apod.Id" id="explanation-button"> Explanation </button>
+                        <div id="view-explanation-@apod.Id" popover class="popover-box"> 
+                            <p> @getExplanation(apod) </p>
+                        </div>
+                        <button @onclick="() => DeleteApod(apod)" id="delete-button"> Delete </button>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
 </div>
 
 @code {
@@ -61,6 +39,17 @@
     {
         var httpClient = HttpClientFactory.CreateClient("Api");
         SavedApods = await httpClient.GetFromJsonAsync<List<Apod>>("/apod/") ?? [];
+    }
+
+     // turn explanation with html markup into raw text (without the html elements)
+    private string getExplanation(Apod apod)
+    {
+        string htmlMarkup = apod.Explanation;
+        var htmlDoc = new HtmlDocument();
+        htmlDoc.LoadHtml(htmlMarkup);
+        string rawText = htmlDoc.DocumentNode.InnerText;
+        string plainText = HttpUtility.HtmlDecode(rawText);
+        return plainText;
     }
 
     private async Task DeleteApod(Apod apod)
