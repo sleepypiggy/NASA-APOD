@@ -62,7 +62,6 @@
 #save-apod-button[b-p8141ciarm] {
     font-size: 1rem;
     padding: 0.5em 1.25em;
-
 }
 
 #date-selector[b-p8141ciarm] {
@@ -74,4 +73,14 @@
     background-color: #0297DE;
     color: white;
     flex-basis: 10px;
+    transition: background-color 150ms, transform 150ms;
+    border: none;
+}
+
+.button:hover[b-p8141ciarm] {
+    background-color: #006ea1;
+}
+
+.button:active[b-p8141ciarm] {
+    transform: scale(0.95);
 }

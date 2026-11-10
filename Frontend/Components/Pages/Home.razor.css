@@ -62,7 +62,6 @@
 #save-apod-button {
     font-size: 1rem;
     padding: 0.5em 1.25em;
-
 }
 
 #date-selector {
@@ -74,4 +73,14 @@
     background-color: #0297DE;
     color: white;
     flex-basis: 10px;
+    transition: background-color 150ms, transform 150ms;
+    border: none;
+}
+
+.button:hover {
+    background-color: #006ea1;
+}
+
+.button:active {
+    transform: scale(0.95);
 }

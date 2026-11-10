@@ -273,7 +273,6 @@ main[b-qix8y9mb5w] {
 #save-apod-button[b-p8141ciarm] {
     font-size: 1rem;
     padding: 0.5em 1.25em;
-
 }
 
 #date-selector[b-p8141ciarm] {
@@ -285,6 +284,16 @@ main[b-qix8y9mb5w] {
     background-color: #0297DE;
     color: white;
     flex-basis: 10px;
+    transition: background-color 150ms, transform 150ms;
+    border: none;
+}
+
+.button:hover[b-p8141ciarm] {
+    background-color: #006ea1;
+}
+
+.button:active[b-p8141ciarm] {
+    transform: scale(0.95);
 }
 /* /Frontend/Components/Pages/Saved.razor.rz.scp.css */
 #saved-apods-grid[b-6jkqzb7ud8] {
@@ -350,56 +359,4 @@ main[b-qix8y9mb5w] {
 
 #delete-button:active[b-6jkqzb7ud8] {
     transform:scale(0.95);
-}
-
-.apod-table[b-6jkqzb7ud8] {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    min-width: 400px;
-    border-radius: 5px 5px 0 0;
-    overflow: hidden;
-    box-shadow: 0 0 20px (0, 0, 0, 0.15);
-    width: 100%;
-}
-
-.apod-table thead tr[b-6jkqzb7ud8] {
-    background-color: #0297DE;
-    color: white;
-    text-align: left;
-    font-weight: bold;
-}
-
-.apod-table th[b-6jkqzb7ud8], .apod-table td[b-6jkqzb7ud8] {
-    padding: 12px 15px;
-}
-
-.apod-table tbody tr:nth-last-of-type(even)[b-6jkqzb7ud8] {
-    background-color: #4a4a4a;
-}
-
-.apod-table tbody tr:nth-last-of-type(odd)[b-6jkqzb7ud8] {
-    background-color: #616161;
-}
-
-.apod-table tbody tr:last-of-type[b-6jkqzb7ud8] {
-    border-bottom: 2px solid #131F2A;
-}
-
-.apod-table tbody tr:hover[b-6jkqzb7ud8] {
-    background-color: #898989
-}
-
-.view-saved-image[b-6jkqzb7ud8] {
-    max-width: 100%;
-    height: auto;
-}
-
-.popover-box[b-6jkqzb7ud8] {
-    max-width: 95vw;
-    max-height: 95vh;
-}
-
-.popover-box[b-6jkqzb7ud8]::backdrop {
-    background: rgba(0, 0, 0, 0.5);
 }
