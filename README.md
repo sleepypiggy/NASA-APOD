@@ -4,9 +4,9 @@
 
 The backend is built with ASP.NET Core in C#, using Entity Framework Core to handle communication with the SQLite database and the frontend is built with Blazor in C# using HTML and CSS for structure and styling.
 
-![Home page](./screenshots/home-page.png)
+![Home page](./screenshots/home-page-v2.png)
 
-![Saved page](./screenshots/saved-apods.png)
+![Saved page](./screenshots/saved-apods-v2.png)
 
 ## Features
 - Use a calendar to select a date to see the corresponding APOD including the image, title, and explanation.
